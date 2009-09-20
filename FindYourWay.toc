@@ -1,0 +1,11 @@
+## Interface: 30200
+## Title: FindYourWay
+## Author: Cargor
+## Version: 1.0
+## X-eMail: xconstruct@gmail.com
+## X-Website: http://www.xconstruct.net
+## Notes: Coordinates mod with city database.
+
+core.lua
+icons.lua
+cities.lua

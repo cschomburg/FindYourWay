@@ -123,6 +123,7 @@ SLASH_FINDYOURWAY4 = "/find"
 
 local FIND_YOUR_WAY = "Find Your Way!"
 WorldMapZoneMinimapDropDown:Hide()
+WorldMapZoneMinimapDropDown.Show = function() end
 
 local editbox = CreateFrame("EditBox", nil, WorldMapFrame)
 editbox:SetAutoFocus(nil)
@@ -139,7 +140,8 @@ left:SetTexture("Interface\\Common\\Common-Input-Border")
 left:SetTexCoord(0, 0.0625, 0, 0.625)
 
 local right = editbox:CreateTexture(nil, "BACKGROUND")
-right:SetWidth(8) right:SetHeight(20)
+right:SetWidth(8)
+right:SetHeight(20)
 right:SetPoint("RIGHT", 0, 0)
 right:SetTexture("Interface\\Common\\Common-Input-Border")
 right:SetTexCoord(0.9375, 1, 0, 0.625)
@@ -161,3 +163,8 @@ editbox:SetScript("OnEnterPressed", function(self)
 	self:SetText(FIND_YOUR_WAY)
 	self:ClearFocus()
 end)
+
+if(select(4, GetBuildInfo()) >= 30300) then
+	hooksecurefunc("WorldMap_ToggleSizeUp", function() editbox:Show() end)
+	hooksecurefunc("WorldMap_ToggleSizeDown", function() editbox:Hide() end)
+end

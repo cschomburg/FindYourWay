@@ -15,6 +15,7 @@ local used, unused = {}, {}
 local function removePOI(poi)
 	poi:Hide()
 	poi:ClearAllPoints()
+	if(poi.hud) then poi.hud:Disable() poi.hud = nil end
 	used[poi] = nil
 	unused[#unused+1] = poi
 	numShown = numShown-1
@@ -63,6 +64,9 @@ local function plot(x, y, icon, caption)
 	else
 		poi.tex:SetTexture("Interface\\Minimap\\POIIcons")
 		poi.tex:SetTexCoord(13/16, 14/16, 2/16, 3/16)
+	end
+	if(Coordinator) then
+		poi.hud = Coordinator:CreateTarget(caption, x/100, y/100, 0)
 	end
 	poi:Show()
 	poi:SetPoint("CENTER", WorldMapDetailFrame, "TOPLEFT", x/100*width, -y/100*height)

@@ -116,6 +116,21 @@ local function doSearch(self, msg)
 end
 FindYourWay = setmetatable({Icons = icons, Data = data}, {__call = doSearch})
 
+function FindYourWay:AddPoints(arg1, arg2)
+	if(type(arg1) == "string") then
+		local db = data[arg1] or  {}
+		data[arg1] = db
+
+		for name, poi in pairs(arg2) do
+			db[name] = (db[name] or "")..poi
+		end
+	else
+		for name, table in pairs(arg1) do
+			self:AddPoints(name, table)
+		end
+	end
+end
+
 SlashCmdList['FINDYOURWAY'] = FindYourWay
 SLASH_FINDYOURWAY1 = "/way"
 SLASH_FINDYOURWAY2 = "/fyw"

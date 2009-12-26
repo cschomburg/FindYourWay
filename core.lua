@@ -41,6 +41,7 @@ end
 
 local function createPOI()
 	local poi = CreateFrame("Button", nil, WorldMapDetailFrame)
+	poi:SetFrameLevel(20)
 	poi:RegisterForClicks("RightButtonUp")
 	poi:SetWidth(16)
 	poi:SetHeight(16)
@@ -63,10 +64,10 @@ local function plot(x, y, icon, caption)
 		poi.tex:SetTexCoord(0, 1, 0, 1)
 	else
 		poi.tex:SetTexture("Interface\\Minimap\\POIIcons")
-		poi.tex:SetTexCoord(13/16, 14/16, 2/16, 3/16)
+		poi.tex:SetTexCoord(3/14, 4/14, 3/14, 4/14)
 	end
 	if(Coordinator) then
-		poi.hud = Coordinator:CreateTarget(caption, x/100, y/100, 0)
+		poi.hud = Coordinator.DisplayCoordinate(caption, x/100, y/100, 0)
 	end
 	poi:Show()
 	poi:SetPoint("CENTER", WorldMapDetailFrame, "TOPLEFT", x/100*width, -y/100*height)
@@ -164,7 +165,5 @@ editbox:SetScript("OnEnterPressed", function(self)
 	self:ClearFocus()
 end)
 
-if(select(4, GetBuildInfo()) >= 30300) then
-	hooksecurefunc("WorldMap_ToggleSizeUp", function() editbox:Show() end)
-	hooksecurefunc("WorldMap_ToggleSizeDown", function() editbox:Hide() end)
-end
+hooksecurefunc("WorldMap_ToggleSizeUp", function() editbox:Show() end)
+hooksecurefunc("WorldMap_ToggleSizeDown", function() editbox:Hide() end)

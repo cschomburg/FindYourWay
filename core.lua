@@ -66,9 +66,6 @@ local function plot(x, y, icon, caption)
 		poi.tex:SetTexture("Interface\\Minimap\\POIIcons")
 		poi.tex:SetTexCoord(3/14, 4/14, 3/14, 4/14)
 	end
-	if(Coordinator) then
-		poi.hud = Coordinator.DisplayCoordinate(caption, x/100, y/100, 0)
-	end
 	poi:Show()
 	poi:SetPoint("CENTER", WorldMapDetailFrame, "TOPLEFT", x/100*width, -y/100*height)
 	if(numShown == 1 and helper) then helper:Show() end

@@ -5,6 +5,8 @@
 ## X-eMail: xconstruct@gmail.com
 ## X-Website: http://www.xconstruct.net
 ## Notes: Coordinates mod with city database.
+## LoadManagers: AddOnLoader
+## X-LoadOn-Always: delayed
 
 core.lua
 icons.lua
